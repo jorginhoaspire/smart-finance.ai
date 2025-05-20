@@ -1,6 +1,6 @@
 {
-  "name": "finance-ai",
-  "version": "0.1.0",
+  "name": "SMART-Finance.AI",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -27,7 +27,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
-    "eslint": "^9.27.0",
+    "eslint": "^7.23.0",
     "git-commit-msg-linter": "^5.0.8",
     "lucide-react": "^0.454.0",
     "next": "^14.2.28",
