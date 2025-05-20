@@ -2,7 +2,6 @@
   "name": "SMART-Finance.AI",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -43,7 +42,8 @@
     "react-markdown": "^9.0.1",
     "react-number-format": "^5.4.2",
     "recharts": "^2.13.3",
-    "stripe": "^17.3.1",
+    "sharp": "^0.34.2",
+    "stripe": "^17.7.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "typescript-eslint": "^8.32.1",

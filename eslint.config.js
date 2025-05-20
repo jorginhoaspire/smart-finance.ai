@@ -1,19 +1,19 @@
 'use strict'
 
-const base = require('neostandard')({})
+//const base = require('neostandard')({})
 
 module.exports = [
-  ...base,
+  //...base,
   // Ignorar arquivos específicos
   {
     ignores: ['tailwind.config.ts'],
   },
 
   // Configurações base do ESLint (para JS)
-  js.configs.recommended,
+  //js.configs.recommended,
 
   // Configurações para TypeScript
-  ...tseslint.configs.recommended,
+  //...tseslint.configs.recommended,
 
   // (Opcional) Regras personalizadas
   {
