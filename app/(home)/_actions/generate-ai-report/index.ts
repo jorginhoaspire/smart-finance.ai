@@ -17,7 +17,9 @@ export const generateAiReport = async ({ month }: GenerateAiReportSchema) => {
   const user = await clerkClient().users.getUser(userId);
   const hasPremiumPlan = true; //user.publicMetadata.subscriptionPlan === "premium";
   if (!hasPremiumPlan) {
-    throw new Error("Você precisa assinar o plano premium para gerar relatórios por IA!");
+    throw new Error(
+      "Você precisa assinar o plano premium para gerar relatórios por IA!",
+    );
   }
   if (!process.env.OPENAI_API_KEY) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -30,20 +32,24 @@ export const generateAiReport = async ({ month }: GenerateAiReportSchema) => {
   const yearCurrent = new Date().getFullYear();
   const transactions = await db.transaction.findMany({
     where: {
+      userId,
       date: {
         gte: new Date(`${yearCurrent}-${month}-01`),
         lt: new Date(`${yearCurrent}-${month}-31`),
       },
     },
   });
+  //console.log(transactions)
   // mandar as transações para o ChatGPT e pedir para ele gerar um relatório com insights
   const content = `Gere um relatório com insights sobre as minhas finanças, com dicas e orientações de como melhorar minha vida financeira. As transações estão divididas por ponto e vírgula. A estrutura de cada uma é {DATA}-{TIPO}-{VALOR}-{CATEGORIA}. São elas:
+  
   ${transactions
     .map(
       (transaction) =>
-        `${transaction.date.toLocaleDateString("pt-BR")}-R$${transaction.amount}-${transaction.type}-${transaction.category}`,
+        `R$${transaction.amount}-${transaction.type}-${transaction.category}`,
     )
     .join(";")}`;
+
   const completion = await openAi.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [
